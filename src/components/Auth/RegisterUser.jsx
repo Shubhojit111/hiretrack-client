@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import config from "../utils/config"
+import config from "../../utils/config"
 
 const RegisterUser = () => {
   const serverURL = config.serverURL;
