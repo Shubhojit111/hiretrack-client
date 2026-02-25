@@ -2,20 +2,20 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { LayoutDashboard, Briefcase, FileText, LogOut, LetterText, FileJson, User2, LogOutIcon, LucideLogOut } from "lucide-react";
 import Profile from "../pages/Profile";
 import axios from "axios";
-import {useConfig} from "../utils/config"
+import { useConfig } from "../utils/config"
 
 const HomeLayout = () => {
-  const navigate = useNavigate()
   const { serverURL } = useConfig();
+  const navigate = useNavigate()
 
-  const handleLogout = async()=>{
-    try{
-      const res=await axios.post(`${serverURL}/api/auth/logout`);
+
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(`${serverURL}/api/auth/logout`);
       console.log(res);
       navigate("/login");
     }
-    catch(err)
-    {
+    catch (err) {
       console.log(err.response?.data?.message || err.message)
     }
   }
