@@ -17,7 +17,7 @@ const LoginUser = () => {
         const {name,value}=e.target
         setFormdata({
             ...formdata,
-            [name]:value
+            [name]:value 
         })
     }
 
