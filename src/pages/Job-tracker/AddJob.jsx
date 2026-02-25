@@ -1,9 +1,11 @@
 import axios from "axios";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
+import {useConfig} from "../../utils/config"
 
 
 const AddJob = ({ isAddOpen, onAddClose, onAddJob }) => {
+    const { serverURL } = useConfig();
     const [formData, setFormData] = useState({
         company: "",
         position: "",
@@ -24,7 +26,7 @@ const AddJob = ({ isAddOpen, onAddClose, onAddJob }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("http://localhost:5000/api/job/create",
+            const response = await axios.post(`${serverURL}/api/job/create`,
                 formData, { withCredentials: true })
             console.log(response.data.message)
             onAddJob(response.data.job);

@@ -10,6 +10,7 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import {useConfig} from "../../utils/config"
 
 const monthlyData = [
   { month: "Sep", value: 5 },
@@ -23,6 +24,7 @@ const monthlyData = [
 
 
 const Dashboard = () => {
+  const { serverURL } = useConfig();
   const [applications, setApplications] = useState([]);
 
   const statusData = [
@@ -37,7 +39,7 @@ const Dashboard = () => {
     const getApplications = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/job/read",
+          `${serverURL}/api/job/read`,
           {
             withCredentials: true,
           }

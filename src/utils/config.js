@@ -1,5 +1,5 @@
 const config = {
-  serverURL: "http://localhost:5000",
+  serverURL: "https://hiretrack-server.onrender.com",
 };
 
 export default config;

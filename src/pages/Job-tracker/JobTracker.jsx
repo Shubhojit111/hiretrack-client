@@ -11,6 +11,7 @@ import AddJob from "./AddJob";
 import axios from "axios";
 import EditJob from "./EditJob";
 import { Link } from "react-router-dom";
+import {useConfig} from "../../utils/config"
 
 
 const statusStyles = {
@@ -24,6 +25,7 @@ const statusStyles = {
 
 
 const JobTracker = () => {
+  const { serverURL } = useConfig();
 
   const [isAddOpen, setIsAddOpen] = useState(false)
   const [isEditOpen, setIsEditOpen] = useState(false)
@@ -38,7 +40,7 @@ const JobTracker = () => {
     const getAllJobs = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/job/read",
+          `${serverURL}/api/job/read`,
           {
             withCredentials: true
           })
@@ -70,7 +72,7 @@ const JobTracker = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/job/delete/${id}`,
+      const response = await axios.post(`${serverURL}/api/job/delete/${id}`,
         {},
         { withCredentials: true }
       )

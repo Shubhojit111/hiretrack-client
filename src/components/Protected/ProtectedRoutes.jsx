@@ -1,13 +1,15 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {useConfig} from "../../utils/config"
 
 export default function ProtectedRoute({ children }) {
+  const { serverURL } = useConfig();
   const [authorized, setAuthorized] = useState(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/check", {
+      .get(`${serverURL}/api/auth/check`, {
         withCredentials: true,
       })
       .then(() => setAuthorized(true))

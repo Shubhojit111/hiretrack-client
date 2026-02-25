@@ -2,10 +2,12 @@ import axios from "axios";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
+import {useConfig} from "../../utils/config"
 
 
 const EditJob = ({ isEditOpen, onEditClose, jobData, onUpdateJob }) => {
     // const navigate=useNavigate();
+    const { serverURL } = useConfig();
     const [formData, setFormData] = useState({
         company: "",
         position: "",
@@ -41,7 +43,7 @@ const EditJob = ({ isEditOpen, onEditClose, jobData, onUpdateJob }) => {
         e.preventDefault()
         try {
             const response = await axios.put(
-                `http://localhost:5000/api/job/update/${jobData._id}`,
+                `${serverURL}/api/job/update/${jobData._id}`,
                 formData,
                 { withCredentials: true })
             console.log(response.data.message)
