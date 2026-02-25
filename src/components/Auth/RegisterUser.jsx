@@ -1,0 +1,114 @@
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
+const RegisterUser = () => {
+
+  const navigate = useNavigate()
+
+  const [formdata, setFormdata] = useState({
+    name: "",
+    email: "",
+    password: ""
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormdata({
+      ...formdata,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    // console.log(formdata)
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/register",
+        formdata,
+        { withCredentials: true }
+      )
+      console.log(response.data.message)
+      navigate('/dashboard')
+    }
+    catch (err) {
+      console.log(err?.response?.data?.message || err.message)
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-[#0f172a] flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-[#1e293b] p-8 rounded-2xl shadow-xl border border-white/10">
+        <h2 className="text-2xl font-bold text-white mb-2">
+          Create Account
+        </h2>
+        <p className="text-gray-400 text-sm mb-6">
+          Start tracking your job applications today.
+        </p>
+
+        {/* {error && (
+          <div className="bg-red-500/10 text-red-400 p-3 rounded-lg text-sm mb-4">
+            {error}
+          </div>
+        )} */}
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            onChange={handleChange}
+            className="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            onChange={handleChange}
+            className="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+            required
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+            className="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+            required
+          />
+
+          <button
+            type="submit"
+            // disabled={loading}
+            className="w-full bg-blue-600 hover:bg-blue-700 transition-all py-3 rounded-lg text-white font-semibold"
+          >
+            {/* {loading ? "Creating..." : "Register"} */}
+            Register
+          </button>
+        </form>
+
+        <p className="text-gray-400 text-sm mt-6 text-center">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-400 hover:underline">
+            Sign In
+          </Link>
+        </p>
+
+
+        <Link to="/dashboard" className="text-blue-400 hover:underline w-full text-center block mt-4">
+          Continue as Guest 
+        </Link>
+
+      </div>
+    </div>
+  );
+};
+
+
+export default RegisterUser 
