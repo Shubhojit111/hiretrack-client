@@ -2,12 +2,12 @@ import axios from "axios";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
-import {useConfig} from "../../utils/config"
+import config from "../../utils/config"
 
 
 const EditJob = ({ isEditOpen, onEditClose, jobData, onUpdateJob }) => {
     // const navigate=useNavigate();
-    const { serverURL } = useConfig();
+    const serverURL = config.serverURL;
     const [formData, setFormData] = useState({
         company: "",
         position: "",

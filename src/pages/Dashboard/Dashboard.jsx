@@ -10,7 +10,7 @@ import {
   Pie,
   Cell,
 } from "recharts";
-import {useConfig} from "../../utils/config"
+import config from "../../utils/config"
 
 const monthlyData = [
   { month: "Sep", value: 5 },
@@ -24,7 +24,7 @@ const monthlyData = [
 
 
 const Dashboard = () => {
-  const { serverURL } = useConfig();
+  const serverURL = config.serverURL;
   const [applications, setApplications] = useState([]);
 
   const statusData = [

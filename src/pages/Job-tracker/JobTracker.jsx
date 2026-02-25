@@ -11,7 +11,7 @@ import AddJob from "./AddJob";
 import axios from "axios";
 import EditJob from "./EditJob";
 import { Link } from "react-router-dom";
-import {useConfig} from "../../utils/config"
+import config from "../../utils/config"
 
 
 const statusStyles = {
@@ -25,7 +25,7 @@ const statusStyles = {
 
 
 const JobTracker = () => {
-  const { serverURL } = useConfig();
+  const serverURL = config.serverURL;
 
   const [isAddOpen, setIsAddOpen] = useState(false)
   const [isEditOpen, setIsEditOpen] = useState(false)

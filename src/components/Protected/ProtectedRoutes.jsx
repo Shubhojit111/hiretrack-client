@@ -1,10 +1,11 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {useConfig} from "../../utils/config"
+import config from "../../utils/config";
+
 
 export default function ProtectedRoute({ children }) {
-  const { serverURL } = useConfig();
+  const serverURL = config.serverURL;
   const [authorized, setAuthorized] = useState(null);
 
   useEffect(() => {

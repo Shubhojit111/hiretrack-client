@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import {useConfig} from "../../utils/config"
+import config from "../../utils/config";
+
 
 const LoginUser = () => {
-    const { serverURL } = useConfig();
+    const serverURL = config.serverURL;
     const navigate=useNavigate()
 
     const [formdata, setFormdata] = useState({

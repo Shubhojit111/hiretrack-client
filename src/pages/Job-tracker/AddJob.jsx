@@ -1,11 +1,11 @@
 import axios from "axios";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
-import {useConfig} from "../../utils/config"
+import config from "../../utils/config"
 
 
 const AddJob = ({ isAddOpen, onAddClose, onAddJob }) => {
-    const { serverURL } = useConfig();
+    const serverURL = config.serverURL;
     const [formData, setFormData] = useState({
         company: "",
         position: "",
