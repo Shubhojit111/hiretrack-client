@@ -2,10 +2,10 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { LayoutDashboard, Briefcase, FileText, LogOut, LetterText, FileJson, User2, LogOutIcon, LucideLogOut } from "lucide-react";
 import Profile from "../pages/Profile";
 import axios from "axios";
-import { useConfig } from "../utils/config"
+import config from "../utils/config"
 
 const HomeLayout = () => {
-  const { serverURL } = useConfig();
+  const serverURL = config.serverURL;
   const navigate = useNavigate()
 
 
