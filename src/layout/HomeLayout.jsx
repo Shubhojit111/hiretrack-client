@@ -3,16 +3,33 @@ import { LayoutDashboard, Briefcase, FileText, LogOut, LetterText, FileJson, Use
 import Profile from "../pages/Profile";
 import axios from "axios";
 import config from "../utils/config"
+import { useEffect, useState } from "react";
 
 const HomeLayout = () => {
   const serverURL = config.serverURL;
   const navigate = useNavigate()
 
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    const checkAuth = async() =>
+      {
+        try{
+          const response = await axios.get(`${serverURL}/api/auth/check`,{withCredentials:true})
+          // console.log(response.data)
+          setUser(response.data.user)
+        }
+        catch(err){
+          console.log(err.response?.data?.message || err.message)
+        }
+      }
+      checkAuth()
+  } , [])
 
   const handleLogout = async () => {
     try {
       const res = await axios.post(`${serverURL}/api/auth/logout`);
-      console.log(res);
+      // console.log(res);
       navigate("/login");
     }
     catch (err) {
@@ -135,7 +152,7 @@ const HomeLayout = () => {
 
           {/* Left */}
           <h1 className="text-lg font-semibold text-gray-800">
-            HireTrack
+            Welcome, {user.name}
           </h1>
 
           {/* Right */}

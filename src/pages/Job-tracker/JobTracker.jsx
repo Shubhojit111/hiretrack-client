@@ -44,7 +44,7 @@ const JobTracker = () => {
           {
             withCredentials: true
           })
-        console.log(response.data.jobs)
+        // console.log(response.data.jobs)
         setApplications(response.data.jobs)
       }
       catch (error) {
@@ -236,7 +236,7 @@ const JobTracker = () => {
                     <div className="flex justify-center gap-4 text-gray-500">
 
                       <Link to={
-                        app.link.startsWith("http")
+                        app.link && app.link.startsWith("http")
                           ? app.link
                           : `https://${app.link}`
                       }
