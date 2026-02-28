@@ -37,25 +37,29 @@ const App = () => {
 
         <Route path="/resume-analyzer"
           element={
-            // <LockedWrapper feature="Resume Analyzer">
+            <LockedWrapper feature="Resume Analyzer">
               <ResumeAnalyzer />
-            // </LockedWrapper>
+            </LockedWrapper>
           }
         />
 
         <Route path="/cover-letter" element={
-          // <LockedWrapper feature="Cover Letter Generator">
+          <LockedWrapper feature="Cover Letter Generator">
             <CoverLetter />
-          // </LockedWrapper>
+          </LockedWrapper>
         } />
 
         <Route path="/jd-analyzer" element={
-          // <LockedWrapper feature="JD Analyzer">
+          <LockedWrapper feature="JD Analyzer">
             <JDAnalyzer />
-          // </LockedWrapper>
+          </LockedWrapper>
         } />
 
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={
+          <LockedWrapper feature="Profile">
+            <Profile />
+          </LockedWrapper>
+        } />
       </Route>
 
     </Routes>

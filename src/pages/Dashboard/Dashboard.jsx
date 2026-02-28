@@ -53,7 +53,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen bg-[#f5f6f8] animate-fadeIn">
+    <div className="flex flex-col h-fit py-0 bg-[#f5f6f8] animate-fadeIn">
 
       {/* Header */}
       <div className="mb-6">
@@ -133,7 +133,7 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Applications Table */}
-      <div className="bg-white p-6 rounded-xl shadow-sm mb-8">
+      <div className="bg-white p-6 rounded-xl shadow-sm mb-2">
         <h3 className="font-medium text-gray-700 mb-4">
           Recent Applications
         </h3>
@@ -167,8 +167,8 @@ const Dashboard = () => {
       </div>
 
 
+
     </div>
-    // </div>
   );
 };
 
