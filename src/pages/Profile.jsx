@@ -14,9 +14,17 @@ export default function Profile() {
         { name: "Docker", level: 55 },
         { name: "Figma", level: 50 },
     ]);
-
-
+  
+     
+     
+     
+     
+     
+     
+     
     
+
+
     // ✅ Added missing states
     const [experience] = useState([
         {
