@@ -15,6 +15,8 @@ export default function Profile() {
         { name: "Figma", level: 50 },
     ]);
 
+
+    
     // ✅ Added missing states
     const [experience] = useState([
         {
