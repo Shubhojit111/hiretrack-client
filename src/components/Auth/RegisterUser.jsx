@@ -101,11 +101,6 @@ const RegisterUser = () => {
           </Link>
         </p>
 
-
-        <Link to="/dashboard" className="text-blue-400 hover:underline w-full text-center block mt-4">
-          Continue as Guest 
-        </Link>
-
       </div>
     </div>
   );

@@ -18,134 +18,136 @@ export default function CoverLetter() {
   const [selectedTemplate, setSelectedTemplate] = useState("standard");
 
   return (
-    <div className="bg-slate-50">
-      <div className="max-w-6xl mx-auto">
+    <div className="">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-2xl font-semibold text-slate-800">
+          AI Cover Letter Generator
+        </h1>
+        <p className="text-sm text-slate-500 mt-1">
+          Generate a tailored, standout cover letter in seconds
+        </p>
+      </div>
 
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-semibold text-slate-800">
-            AI Cover Letter Generator
-          </h1>
-          <p className="text-sm text-slate-500 mt-1">
-            Generate a tailored, standout cover letter in seconds
-          </p>
-        </div>
+      <div className="flex flex-col lg:flex-row gap-8">
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        {/* LEFT SIDE */}
+        <div className="flex-2 space-y-6">
 
-          {/* LEFT SIDE */}
-          <div className="lg:col-span-2 space-y-6">
-
-            {/* Job Details */}
-            <Card title="Job Details">
-              <div className="grid md:grid-cols-2 gap-4">
+          {/* Job Details */}
+          <Card title="Job Details">
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
                 <Input label="Job Role *" placeholder="e.g. Frontend Engineer" />
+              </div>
+              <div className="flex-1">
                 <Input label="Company Name *" placeholder="e.g. Google" />
               </div>
-
-              <Textarea
-                label="Key Skills"
-                placeholder="React, TypeScript, System Design, Node.js..."
-              />
-
-              <Textarea
-                label="Notable Experience (Optional)"
-                placeholder="Built a platform with 10k+ users, led a team..."
-              />
-            </Card>
-
-            {/* Tone */}
-            <Card title="Tone & Style">
-              <div className="grid md:grid-cols-4 gap-4">
-                {tones.map(tone => (
-                  <button
-                    key={tone.id}
-                    onClick={() => setSelectedTone(tone.id)}
-                    className={`p-4 rounded-xl border transition text-left
-                      ${selectedTone === tone.id
-                        ? "border-indigo-600 bg-indigo-50"
-                        : "border-slate-200 hover:border-slate-300"}`}
-                  >
-                    <div className="text-lg mb-2">{tone.icon}</div>
-                    <div className="text-sm font-semibold text-slate-800">
-                      {tone.label}
-                    </div>
-                    <div className="text-xs text-slate-500">
-                      {tone.desc}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </Card>
-
-            {/* Template */}
-            <Card title="Template">
-              <div className="flex gap-4">
-                {templates.map(temp => (
-                  <button
-                    key={temp.id}
-                    onClick={() => setSelectedTemplate(temp.id)}
-                    className={`flex-1 p-4 rounded-xl border transition
-                      ${selectedTemplate === temp.id
-                        ? "bg-indigo-600 text-white border-indigo-600"
-                        : "border-slate-200 text-slate-700 hover:border-slate-300"}`}
-                  >
-                    <div className="text-sm font-semibold">
-                      {temp.label}
-                    </div>
-                    <div className="text-xs opacity-80">
-                      {temp.desc}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </Card>
-
-            {/* CTA */}
-            <button className="w-full mt-4 bg-linear-to-r from-indigo-600 to-indigo-500 text-white py-3 rounded-xl font-medium text-sm hover:opacity-90 transition shadow-md">
-              ✨ Generate Cover Letter →
-            </button>
-
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="space-y-6">
-
-            {/* Pro Tips */}
-            <Card title="Pro Tips">
-              <ul className="space-y-3 text-sm text-slate-600">
-                <li>• Customize with specific project examples</li>
-                <li>• Mention company’s recent news</li>
-                <li>• Quantify your impact</li>
-                <li>• Mirror keywords from job description</li>
-              </ul>
-            </Card>
-
-            {/* Quick Stats */}
-            <Card title="Quick Stats">
-              <div className="flex gap-4">
-                <StatBox value="3.2x" label="Avg. Response" sub="higher callbacks" />
-                <StatBox value="45 min" label="Time Saved" sub="per application" />
-              </div>
-            </Card>
-
-            {/* AI Info */}
-            <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-6">
-              <h3 className="text-sm font-semibold text-indigo-700 mb-2">
-                AI-Powered
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Our AI analyzes thousands of successful applications
-                to craft letters that get noticed by hiring managers.
-              </p>
-              <button className="mt-3 text-xs text-indigo-600 font-medium">
-                Learn how it works →
-              </button>
             </div>
 
+            <Textarea
+              label="Key Skills"
+              placeholder="React, TypeScript, System Design, Node.js..."
+            />
+
+            <Textarea
+              label="Notable Experience (Optional)"
+              placeholder="Built a platform with 10k+ users, led a team..."
+            />
+          </Card>
+
+          {/* Tone */}
+          <Card title="Tone & Style">
+            <div className="flex flex-wrap gap-4">
+              {tones.map(tone => (
+                <button
+                  key={tone.id}
+                  onClick={() => setSelectedTone(tone.id)}
+                  className={`flex-1 min-w-[180px] p-4 rounded-xl border transition text-left
+                      ${selectedTone === tone.id
+                      ? "border-indigo-600 bg-indigo-50"
+                      : "border-slate-200 hover:border-slate-300"}`}
+                >
+                  <div className="text-lg mb-2">{tone.icon}</div>
+                  <div className="text-sm font-semibold text-slate-800">
+                    {tone.label}
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    {tone.desc}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </Card>
+
+          {/* Template */}
+          <Card title="Template">
+            <div className="flex gap-4">
+              {templates.map(temp => (
+                <button
+                  key={temp.id}
+                  onClick={() => setSelectedTemplate(temp.id)}
+                  className={`flex-1 p-4 rounded-xl border transition
+                      ${selectedTemplate === temp.id
+                      ? "bg-indigo-600 text-white border-indigo-600"
+                      : "border-slate-200 text-slate-700 hover:border-slate-300"}`}
+                >
+                  <div className="text-sm font-semibold">
+                    {temp.label}
+                  </div>
+                  <div className="text-xs opacity-80">
+                    {temp.desc}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </Card>
+
+          {/* CTA */}
+          <button className="w-full mt-4 bg-linear-to-r from-indigo-600 to-indigo-500 text-white py-3 rounded-xl font-medium text-sm hover:opacity-90 transition shadow-md">
+            ✨ Generate Cover Letter →
+          </button>
+
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="flex-1 space-y-6">
+
+          {/* Pro Tips */}
+          <Card title="Pro Tips">
+            <ul className="space-y-3 text-sm text-slate-600">
+              <li>• Customize with specific project examples</li>
+              <li>• Mention company’s recent news</li>
+              <li>• Quantify your impact</li>
+              <li>• Mirror keywords from job description</li>
+            </ul>
+          </Card>
+
+          {/* Quick Stats */}
+          <Card title="Quick Stats">
+            <div className="flex gap-4">
+              <StatBox value="3.2x" label="Avg. Response" sub="higher callbacks" />
+              <StatBox value="45 min" label="Time Saved" sub="per application" />
+            </div>
+          </Card>
+
+          {/* AI Info */}
+          <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-6">
+            <h3 className="text-sm font-semibold text-indigo-700 mb-2">
+              AI-Powered
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Our AI analyzes thousands of successful applications
+              to craft letters that get noticed by hiring managers.
+            </p>
+            <button className="mt-3 text-xs text-indigo-600 font-medium">
+              Learn how it works →
+            </button>
           </div>
+
         </div>
       </div>
+
     </div>
   );
 }

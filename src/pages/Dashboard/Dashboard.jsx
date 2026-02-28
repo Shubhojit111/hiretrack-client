@@ -133,13 +133,13 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Applications Table */}
-      <div className="bg-white p-6 rounded-xl shadow-sm">
+      <div className="bg-white p-6 rounded-xl shadow-sm mb-8">
         <h3 className="font-medium text-gray-700 mb-4">
           Recent Applications
         </h3>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-sm text-left">
+          <table className="w-full text-sm text-center">
             <thead className="text-gray-500 border-b">
               <tr>
                 <th className="py-3">Company</th>
@@ -150,7 +150,7 @@ const Dashboard = () => {
             </thead>
 
             <tbody className="text-gray-700">
-              {applications.reverse().slice(0, 5).map((app, index) => (
+              {[...applications].reverse().slice(0, 5).map((app, index) => (
                 <TableRow
                   key={index}
                   company={app.company}
@@ -162,8 +162,13 @@ const Dashboard = () => {
             </tbody>
           </table>
         </div>
+
+
       </div>
+
+
     </div>
+    // </div>
   );
 };
 
@@ -189,7 +194,7 @@ const TableRow = ({ company, role, status, location }) => {
   };
 
   return (
-    <tr className="border-b border-gray-200 transition-all duration-200 ease-in-out hover:bg-gray-100 hover:scale-[1.01]">
+    <tr className="border-b border-gray-200 transition-all duration-200 ease-in-out hover:bg-gray-100">
       <td className="py-3 font-medium">{company}</td>
       <td>{role}</td>
       <td>

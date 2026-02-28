@@ -1,5 +1,5 @@
 import { Plus, Trash2, Pencil } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Profile() {
     const [activeTab, setActiveTab] = useState("skills");
@@ -70,7 +70,7 @@ export default function Profile() {
     const completion = 72;
 
     return (
-        <div className="max-w-6xl mx-auto space-y-8 bg-slate-50 min-h-screen">
+        <div className="space-y-8 h-screen">
 
             {/* PAGE TITLE */}
             <div>

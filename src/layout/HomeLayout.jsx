@@ -12,19 +12,18 @@ const HomeLayout = () => {
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    const checkAuth = async() =>
-      {
-        try{
-          const response = await axios.get(`${serverURL}/api/auth/check`,{withCredentials:true})
-          // console.log(response.data)
-          setUser(response.data.user)
-        }
-        catch(err){
-          console.log(err.response?.data?.message || err.message)
-        }
+    const checkAuth = async () => {
+      try {
+        const response = await axios.get(`${serverURL}/api/auth/check`, { withCredentials: true })
+        // console.log(response.data)
+        setUser(response.data.user)
       }
-      checkAuth()
-  } , [])
+      catch (err) {
+        console.log(err.response?.data?.message || err.message)
+      }
+    }
+    checkAuth()
+  }, [])
 
   const handleLogout = async () => {
     try {
@@ -118,11 +117,6 @@ const HomeLayout = () => {
             JD Analyzer
           </NavLink>
 
-        </div>
-
-        {/* Bottom */}
-        <div className="border-t border-white/10 p-4 space-y-2 text-sm">
-
           <NavLink
             to="/profile"
             className={({ isActive }) =>
@@ -134,6 +128,10 @@ const HomeLayout = () => {
             Profile
           </NavLink>
 
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-white/10 p-4 text-sm">
           <button className="w-full flex items-center gap-3 px-4 py-2 rounded-md text-gray-300 hover:bg-white/10 hover:text-white transition">
             <LogOut size={18} />
             Sign Out

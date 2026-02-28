@@ -13,6 +13,7 @@ import JDAnalyzer from "./pages/JDAnalyzer";
 import Profile from "./pages/Profile";
 
 import ProtectedRoute from "./components/Protected/ProtectedRoutes";
+import LockedWrapper from "./components/LockedWrapper";
 
 const App = () => {
   return (
@@ -33,9 +34,27 @@ const App = () => {
       >
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/job-tracker" element={<JobTracker />} />
-        <Route path="/resume-analyzer" element={<ResumeAnalyzer />} />
-        <Route path="/cover-letter" element={<CoverLetter />} />
-        <Route path="/jd-analyzer" element={<JDAnalyzer />} />
+
+        <Route path="/resume-analyzer"
+          element={
+            // <LockedWrapper feature="Resume Analyzer">
+              <ResumeAnalyzer />
+            // </LockedWrapper>
+          }
+        />
+
+        <Route path="/cover-letter" element={
+          // <LockedWrapper feature="Cover Letter Generator">
+            <CoverLetter />
+          // </LockedWrapper>
+        } />
+
+        <Route path="/jd-analyzer" element={
+          // <LockedWrapper feature="JD Analyzer">
+            <JDAnalyzer />
+          // </LockedWrapper>
+        } />
+
         <Route path="/profile" element={<Profile />} />
       </Route>
 
